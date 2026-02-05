@@ -1,9 +1,11 @@
 # .github/workflows/build-typst.yml
-name: Build PDF
+name: Build Typst PDF
 
 on:
   push:
     branches: ["**"]
+    tags:
+      - "release/**"
   pull_request:
 
 permissions:
@@ -19,21 +21,69 @@ jobs:
 
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
-        # Optional pin:
-        # with:
-        #   typst-version: "^0.14.0"
-        # Caches Typst packages automatically. :contentReference[oaicite:1]{index=1}
 
-      - name: Compile
+      - name: Compute release version (tagged builds)
+        if: startsWith(github.ref, 'refs/tags/release/')
+        run: |
+          ver="${GITHUB_REF_NAME#release/}"
+          echo "RELEASE_VERSION=$ver" >> "$GITHUB_ENV"
+
+      - name: Compile (normal)
+        if: "!startsWith(github.ref, 'refs/tags/release/')"
         run: |
           mkdir -p dist
-          # Change these paths to match your project layout:
-          typst compile long-division.typ dist/steven-russell-long-division.pdf
+          typst compile main.typ dist/main.pdf
 
-      - name: Upload PDF artifact
+      - name: Compile (release tag)
+        if: startsWith(github.ref, 'refs/tags/release/')
+        run: |
+          mkdir -p dist
+          typst compile main.typ "dist/main-${RELEASE_VERSION}.pdf"
+
+      # Always expose a downloadable artifact from the workflow run
+      - name: Upload build artifact (normal)
+        if: "!startsWith(github.ref, 'refs/tags/release/')"
         uses: actions/upload-artifact@v4
         with:
           name: typst-pdf
-          path: dist/steven-russell-long-division.pdf
+          path: dist/main.pdf
           if-no-files-found: error
           retention-days: 30
+
+      - name: Upload build artifact (release)
+        if: startsWith(github.ref, 'refs/tags/release/')
+        uses: actions/upload-artifact@v4
+        with:
+          name: typst-pdf
+          path: dist/main-${{ env.RELEASE_VERSION }}.pdf
+          if-no-files-found: error
+          retention-days: 30
+
+  release:
+    # Only run on release/<...> tags
+    if: startsWith(github.ref, 'refs/tags/release/')
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    needs: build
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: typst-pdf
+          path: dist
+
+      - name: Compute release version
+        run: |
+          ver="${GITHUB_REF_NAME#release/}"
+          echo "RELEASE_VERSION=$ver" >> "$GITHUB_ENV"
+
+      - name: Create GitHub Release and upload PDF
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Release ${{ env.RELEASE_VERSION }}"
+          tag_name: ${{ github.ref_name }}
+          files: dist/main-${{ env.RELEASE_VERSION }}.pdf
