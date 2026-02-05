@@ -1,0 +1,39 @@
+# .github/workflows/build-typst.yml
+name: Build PDF
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+        # Optional pin:
+        # with:
+        #   typst-version: "^0.14.0"
+        # Caches Typst packages automatically. :contentReference[oaicite:1]{index=1}
+
+      - name: Compile
+        run: |
+          mkdir -p dist
+          # Change these paths to match your project layout:
+          typst compile long-division.typ dist/steven-russell-long-division.pdf
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: typst-pdf
+          path: dist/steven-russell-long-division.pdf
+          if-no-files-found: error
+          retention-days: 30
