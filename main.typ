@@ -669,9 +669,12 @@ Before beginning, we should remember that dividing a number by a divisor bigger 
     ]
   ],
   [
-    #align(center)[#pt[Drop]]
     #align(center)[
-      There is no digit left to drop, so we're done!
+      #pt[Drop] \
+      #drop_sub
+      #align(center)[
+        There is no digit left to drop, so we're done!
+      ]
     ]
   ]
 )
