@@ -29,7 +29,10 @@ Note that dealing with remainders is left until the lesson after this introducti
 
 #pagebreak()
 
-#title[The Long Division Algorithm]
+#title[
+  Lesson 3: \
+  The Long Division Algorithm
+]
 
 = The Steps
 The Division Algorithm has four steps:
@@ -39,7 +42,7 @@ The Division Algorithm has four steps:
 + #pt[Drop]
 When doing a division we will usually go through all four step multiple times.
 
-== Example 1: The Basics
+== Example
 === Question
 What is $936 div 4$?
 
@@ -165,132 +168,505 @@ Next we treat $13$ as the new dividend and keep repeating the #rt[Divide], #bt[M
 
 #grid(
   columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 2fr),
+  row-gutter: 1.5em,
+  [
+    #align(center)[
+      #rt[Divide] \
+      #div_sub(13,4)
+      #divtab(
+        4, 
+        grid: true, 
+        [$$], $2$, rt[$3$], [],
+        hl(1, 4), 
+        rt[$4$], vl(), ..spl(936),
+        minus, $8$, [], [],
+        hl(1,2),
+        [$$], rt[$1$], rt[$3$], [],
+        [$$], [], [], [],
+        [$$], [], [], [],
+        [$$], [], [], [],
+        [$$], [], [], []
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #bt[Multiply] \
+      #mult_sub(3,4)
+      #divtab(
+        4, 
+        grid: true, 
+        [$$], $2$, bt[$3$], [],
+        hl(1, 4), 
+        bt[$4$], vl(), ..spl(936),
+        minus, $8$, [], [],
+        hl(1,2),
+        [$$], $1$, $3$, [],
+        [$$], bt[$1$], bt[$2$], [],
+        [$$], [], [], [],
+        [$$], [], [], [],
+        [$$], [], [], []
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #gt[Subtract] \
+      #diff_sub(13,12)
+      #divtab(
+        4, 
+        grid: true, 
+        [$$], $2$, $3$, [],
+        hl(1, 4), 
+        $4$, vl(), ..spl(936),
+        minus, $8$, [], [],
+        hl(1,2),
+        [$$], gt[$1$], gt[$3$], [],
+        minus, gt[$1$], gt[$2$], [],
+        hl(1,3),
+        [$$], [], gt[$1$], [],
+        [$$], [], [], [],
+        [$$], [], [], []
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #pt[Drop] \
+      #drop_sub
+      #divtab(
+        4, 
+        grid: true, 
+        [$$], $2$, $3$, [],
+        hl(1, 4), 
+        $4$, vl(), ..spl(93), pt[$6$],
+        minus, $8$, [], [],
+        hl(1,2),
+        [$$], $1$, $3$, [],
+        minus, $1$, $2$, [],
+        hl(1,3),
+        [$$], [], $1$, pt[$6$],
+        [$$], [], [], [],
+        [$$], [], [], []
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #rt[Divide] \
+      #div_sub(16,4)
+      #divtab(
+        4, 
+        grid: true, 
+        [$$], $2$, $3$, rt[$4$],
+        hl(1, 4), 
+        rt[$4$], vl(), ..spl(936),
+        minus, $8$, [], [],
+        hl(1,2),
+        [$$], $1$, $3$, [],
+        minus, $1$, $2$, [],
+        hl(1,3),
+        [$$], [], rt[$1$], rt[$6$],
+        [$$], [], [], [],
+        [$$], [], [], []
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #bt[Multiply] \
+      #mult_sub(4,4)
+      #divtab(
+        4, 
+        grid: true, 
+        [$$], $2$, $3$, bt[$4$],
+        hl(1, 4), 
+        bt[$4$], vl(), ..spl(936),
+        minus, $8$, [], [],
+        hl(1,2),
+        [$$], $1$, $3$, [],
+        minus, $1$, $2$, [],
+        hl(1,3),
+        [$$], [], $1$, $6$,
+        [$$], [], bt[$1$], bt[$6$],
+        [$$], [], [], []
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #gt[Subtract] \
+      #diff_sub(16,16)
+      #divtab(
+        4, 
+        grid: true, 
+        [$$], $2$, $3$, $4$,
+        hl(1, 4), 
+        $4$, vl(), ..spl(936),
+        minus, $8$, [], [],
+        hl(1,2),
+        [$$], $1$, $3$, [],
+        minus, $1$, $2$, [],
+        hl(1,3),
+        [$$], [], gt[$1$], gt[$6$],
+        [$$], minus, gt[$1$], gt[$6$],
+        hl(2,4),
+        [$$], [], [], gt[$0$]
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #pt[Drop] \
+      #drop_sub
+      #align(center)[
+        There's no digit left to drop, so we're done!
+      ]
+    ] 
+  ]
+)
+
+At last, the *answer* has appeared on top of the tableau!
+$ 936 div 4 = #text(weight: "bold")[234] $
+
+= Leading Zeros
+Many times when we apply the division algorithm we run into numbers that look like this:
+$ 0248 $
+
+The $0$ in the front of number is called a _leading zero_ and can be ignored. The number $0248$ is actually the same just $284$ in disguise! Remember that $0248$ is $0$ _thousands_ and $2$ _hundreds_ and $8$ _tens_ and $4$ _ones_. We just discard the $0$ _thousands_ and write $284$.
+
+Sometimes you might even find multiple leading zeros. These can all be discarded:
+$ 01 &= 1 \ 001 &= 1 \ 0001 &= 1 $
+
+But! We _never_ discard the _trailing_ zeros that come at _the end_ of a number:
+$ 0230 &= 230 \ 0076 &= 76 \ 000100000 &= 100000 $
+
+== Example
+=== Question
+Simplify each number by discarding any leading zeros: \
+a) $001$ \
+b) $0450$ \
+c) $000$ \
+d) $1200$
+
+=== Answer
+a) $1$ \
+b) $450$ \
+c) $0$ (_note: we have to keep one zero so there's still a number left!_ ) \
+d) $1200$
+
+== Example
+=== Question
+What is $1988 div 7$?
+=== Answer
+First rewrite the division using a tableau:
+#align(center)[
+  #divtab(5, hl(1, 5), $7$, vl(start: 0), ..spl(1988))
+]
+
+Before beginning, we should remember that dividing a number by a divisor bigger than itself is alway zero with a remainder. This means that, for example $ 1 div 7 = 0 "r" 7 $ Now we're ready to start!
+#pagebreak()
+
+#grid(
+  columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr,),
   row-gutter: 1em,
   [
-    #align(center)[#rt[Divide]]
-    #divtab(
-      4, 
-      grid: true, 
-      [$$], $2$, rt[$3$], [],
-      hl(1, 4), 
-      rt[$4$], vl(), ..spl(936),
-      minus, $8$, [], [],
-      hl(1,2),
-      [$$], rt[$1$], rt[$3$], [],
-      [$$], [], [], [],
-      [$$], [], [], [],
-      [$$], [], [], [],
-      [$$], [], [], []
-    )
+    #align(center)[
+      #rt[Divide] \
+      #div_sub(1,7) 
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], rt[$0$], [], [], [],
+        hl(1, 5), 
+        rt[$7$], vl(start: 1), rt[$1$], ..spl(988),
+        [$$], [], [], [], [],
+        [$$], [], [], [], [],
+        [$$], [], [], [], []
+      )
+    ]
   ],
   [
-    #align(center)[#bt[Multiply]]
-    #divtab(
-      4, 
-      grid: true, 
-      [$$], $2$, bt[$3$], [],
-      hl(1, 4), 
-      bt[$4$], vl(), ..spl(936),
-      minus, $8$, [], [],
-      hl(1,2),
-      [$$], $1$, $3$, [],
-      [$$], bt[$1$], bt[$2$], [],
-      [$$], [], [], [],
-      [$$], [], [], [],
-      [$$], [], [], []
-    )
+    #align(center)[
+      #bt[Multiply] \
+      #mult_sub(0,7)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], bt[$0$], [], [], [],
+        hl(1, 5), 
+        bt[$7$], vl(start: 1), ..spl(1988),
+        [$$], bt[$0$], [], [], [],
+        [$$], [], [], [], [],
+        [$$], [], [], [], []
+      )
+    ]
   ],
   [
-    #align(center)[#gt[Subtract]]
-    #divtab(
-      4, 
-      grid: true, 
-      [$$], $2$, $3$, [],
-      hl(1, 4), 
-      $4$, vl(), ..spl(936),
-      minus, $8$, [], [],
-      hl(1,2),
-      [$$], gt[$1$], gt[$3$], [],
-      minus, gt[$1$], gt[$2$], [],
-      hl(1,3),
-      [$$], [], gt[$1$], [],
-      [$$], [], [], [],
-      [$$], [], [], []
-    )
-  ]
-  ,
-  [
-    #align(center)[#pt[Drop]]
-    #divtab(
-      4, 
-      grid: true, 
-      [$$], $2$, $3$, [],
-      hl(1, 4), 
-      $4$, vl(), ..spl(93), pt[$6$],
-      minus, $8$, [], [],
-      hl(1,2),
-      [$$], $1$, $3$, [],
-      minus, $1$, $2$, [],
-      hl(1,3),
-      [$$], [], $1$, pt[$6$],
-      [$$], [], [], [],
-      [$$], [], [], []
-    )
+    #align(center)[
+      #gt[Subtract] \
+      #diff_sub(1,0)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, [], [], [],
+        hl(1, 5), 
+        $7$, vl(start: 1), gt[$1$], ..spl(988),
+        minus, gt[$0$], [], [], [],
+        hl(1,2),
+        [$$], gt[$1$], [], [], [],
+        [$$], [], [], [], []
+      )
+    ]
   ],
   [
-    #align(center)[#rt[Divide]]
-    #divtab(
-      4, 
-      grid: true, 
-      [$$], $2$, $3$, rt[$4$],
-      hl(1, 4), 
-      rt[$4$], vl(), ..spl(936),
-      minus, $8$, [], [],
-      hl(1,2),
-      [$$], $1$, $3$, [],
-      minus, $1$, $2$, [],
-      hl(1,3),
-      [$$], [], rt[$1$], rt[$6$],
-      [$$], [], [], [],
-      [$$], [], [], []
-    )
+    #align(center)[
+      #pt[Drop] \
+      #drop_sub
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, [], [], [],
+        hl(1, 5), 
+        $7$, vl(start: 1), [$1$], pt[$9$], ..spl(88),
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], $1$, pt[$9$], [], [],
+        [$$], [], [], [], []
+      )
+    ]
   ],
   [
-    #align(center)[#bt[Multiply]]
-    #divtab(
-      4, 
-      grid: true, 
-      [$$], $2$, $3$, bt[$4$],
-      hl(1, 4), 
-      bt[$4$], vl(), ..spl(936),
-      minus, $8$, [], [],
-      hl(1,2),
-      [$$], $1$, $3$, [],
-      minus, $1$, $2$, [],
-      hl(1,3),
-      [$$], [], $1$, $6$,
-      [$$], [], bt[$1$], bt[$6$],
-      [$$], [], [], []
-    )
+    #align(center)[
+      #rt[Divide] \
+      #div_sub(19,7)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, rt[$2$], [], [],
+        hl(1, 5), 
+        rt[$7$], vl(start: 1), ..spl(1988),
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], rt[$1$], rt[$9$], [], [],
+        [$$], [], [], [], []
+      )
+    ]
   ],
   [
-    #align(center)[#gt[Subtract]]
-    #divtab(
-      4, 
-      grid: true, 
-      [$$], $2$, $3$, $4$,
-      hl(1, 4), 
-      $4$, vl(), ..spl(936),
-      minus, $8$, [], [],
-      hl(1,2),
-      [$$], $1$, $3$, [],
-      minus, $1$, $2$, [],
-      hl(1,3),
-      [$$], [], gt[$1$], gt[$6$],
-      [$$], minus, gt[$1$], gt[$6$],
-      hl(2,4),
-      [$$], [], [], gt[$0$]
-    )
+    #align(center)[
+      #bt()[Multiply] \
+      #mult_sub(2,4)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, bt[$2$], [], [],
+        hl(1, 5), 
+        bt[$7$], vl(start: 1), ..spl(1988),
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], $1$, $9$, [], [],
+        [$$], bt[$1$], bt[$4$], [], []
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #gt()[Subtract] \
+      #diff_sub(19,14)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, $2$, [], [],
+        hl(1, 5), 
+        $7$, vl(start: 1), ..spl(1988),
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], gt[$1$], gt[$9$], [], [],
+        minus, gt[$1$], gt[$4$], [], [],
+        hl(1,3),
+        [$$], [], gt[$5$], [], [],
+        [$$], [], [], [], [],
+        [$$], [], [], [], [],
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #pt()[Drop] \
+      #drop_sub
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, $2$, [], [],
+        hl(1, 5), 
+        $7$, vl(start: 1), ..spl(19), pt[$8$], $8$,
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], $1$, $9$, [], [],
+        minus, $1$, $4$, [], [],
+        hl(1,3),
+        [$$], [], $5$, pt[$8$], [],
+        [$$], [], [], [], [],
+        [$$], [], [], [], [],
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #rt()[Divide] \
+      #div_sub(58,7)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, $2$, rt[$8$], [],
+        hl(1, 5), 
+        rt[$7$], vl(start: 1), ..spl(1988),
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], $1$, $9$, [], [],
+        minus, $1$, $4$, [], [],
+        hl(1,3),
+        [$$], [], rt[$5$], rt[$8$], [],
+        [$$], [], [], [], [],
+        [$$], [], [], [], [],
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #bt()[Multiply] \
+      #mult_sub(8,7)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, $2$, bt[$8$], [],
+        hl(1, 5), 
+        bt[$7$], vl(start: 1), ..spl(1988),
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], $1$, $9$, [], [],
+        minus, $1$, $4$, [], [],
+        hl(1,3),
+        [$$], [], $5$, $8$, [],
+        [$$], [], bt[$5$], bt[$6$], [],
+        [$$], [], [], [], [],
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #gt()[Subtract] \
+      #diff_sub(58,56)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, $2$, $8$, [],
+        hl(1, 5), 
+        $7$, vl(start: 1), ..spl(1988),
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], $1$, $9$, [], [],
+        minus, $1$, $4$, [], [],
+        hl(1,3),
+        [$$], [], gt[$5$], gt[$8$], [],
+        [$$], minus, gt[$5$], gt[$6$], [],
+        hl(2,4),
+        [$$], [], [], gt[2], [],
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #pt[Drop] \
+      #drop_sub
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, $2$, $8$, [],
+        hl(1, 5), 
+        $7$, vl(start: 1), ..spl(198), pt[$8$],
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], $1$, $9$, [], [],
+        minus, $1$, $4$, [], [],
+        hl(1,3),
+        [$$], [], $5$, $8$, [],
+        [$$], minus, $5$, $6$, [],
+        hl(2,4),
+        [$$], [], [], $2$,pt[$8$],
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #rt[Divide] \
+      #div_sub(28, 7)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, $2$, $8$, rt[$4$],
+        hl(1, 5), 
+        rt[$7$], vl(start: 1), ..spl(1988),
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], $1$, $9$, [], [],
+        minus, $1$, $4$, [], [],
+        hl(1,3),
+        [$$], [], $5$, $8$, [],
+        [$$], minus, $5$, $6$, [],
+        hl(2,4),
+        [$$], [], [], rt[$2$], rt[$8$]
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #bt[Multilpy] \
+      #mult_sub(4, 7)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, $2$, $8$, bt[$4$],
+        hl(1, 5), 
+        bt[$7$], vl(start: 1), ..spl(1988),
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], $1$, $9$, [], [],
+        minus, $1$, $4$, [], [],
+        hl(1,3),
+        [$$], [], $5$, $8$, [],
+        [$$], minus, $5$, $6$, [],
+        hl(2,4),
+        [$$], [], [], $2$, $8$,
+        [$$], [], [], bt[$2$], bt[$8$],
+      )
+    ]
+  ],
+  [
+    #align(center)[
+      #gt[Subtract] \
+      #diff_sub(28, 28)
+      #divtab(
+        5, 
+        grid: true, 
+        [$$], $0$, $2$, $8$, $4$,
+        hl(1, 5), 
+        $7$, vl(start: 1), ..spl(1988),
+        minus, $0$, [], [], [],
+        hl(1,2),
+        [$$], $1$, $9$, [], [],
+        minus, $1$, $4$, [], [],
+        hl(1,3),
+        [$$], [], $5$, $8$, [],
+        [$$], minus, $5$, $6$, [],
+        hl(2,4),
+        [$$], [], [], gt[$2$], gt[$8$],
+        [$$], [], minus, gt[$2$], gt[$8$],
+        hl(3,5),
+        [$$], [], [], [], gt[$0$]
+      )
+    ]
   ],
   [
     #align(center)[#pt[Drop]]
@@ -300,5 +676,59 @@ Next we treat $13$ as the new dividend and keep repeating the #rt[Divide], #bt[M
   ]
 )
 
-At last, the *answer* has appeared on top of the tableau!
-$ 936 div 4 = #text(weight: "bold")[234] $
+Phew! In the last step we can see the answer on top of the division tableau:
+$ 0284 $
+
+But since we know we can discard leading zeros, we write the *answer* as:
+$ 1988 div 7 = #text(weight: "bold")[284] $
+
+= Example
+== Question
+What is $6024 div 6$?
+
+== Answer
+First we write the division using a tableau:
+#align(center)[
+  #divtab(5, hl(1, 5), $6$, vl(start: 0), ..spl(6024))
+]
+
+So far when we have shown the division algorithm steps we copied the tableau over and over to make it clear exactly what happens in each step. This would take much to long to do every time, so from now on we will show only what the tableau looks like after we finish applying the division algorithm (this is what your homework problems will look like too):
+
+#align(center)[
+  #table(
+    columns: 2,
+    stroke: none,
+    divtab(
+      5,
+      grid: true,
+      [$$], ..spl(1004),
+      hl(1, 5), $6$, vl(start: 1), ..spl(6024),
+      minus, $6$, [], [], [],
+      hl(1,2), 
+      [$$], $0$, $0$, [], [],
+      minus, [], $0$, [], [],
+      hl(1,3),
+      [$$], [], $0$, $2$, [],
+      [$$], minus, [], $0$, [],
+      hl(2,4),
+      [$$], [], [], $2$, $4$,
+      [$$], [], minus, $2$, $4$,
+      hl(3,5),
+      [$$], [], [], [], $0$
+    ),
+    divtab(
+      2,
+      grid: false,
+      [$$], [$$],
+      [$$], [$$],
+      [$$], [$$],
+      [#text(size: 8pt)[($00$ is just $0$)]], [$$],
+      [$$], [$$],
+      [#text(size: 8pt)[($02$ is just $2$)]], [$$],
+    )
+  )
+  ]
+
+Once again the *answer* waiting for us on top of the tableau:
+$ 6024 div 6 = #text(weight: "bold")[1004] $
+
