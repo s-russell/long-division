@@ -48,7 +48,7 @@ To do divisions with numbers that aren't on the multiplication table we need a l
 Fortunately, as man has studied God's creation we have discovered a division algorithm!
 
 = The Tableau
-Before we apply the division algorithm we have to rewrite the division problem to make some space for writing the steps down. If we start with this division
+Before we apply the division algorithm we have to rewrite the division problem to make some space for writing the steps down. If we started with this division
 $ 936 div 4 $
 
 We would write it like this (notice dividend and divisor have switched places!)
