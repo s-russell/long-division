@@ -51,11 +51,11 @@ Fortunately, as man has studied God's creation we have discovered a division alg
 Before we apply the division algorithm we have to rewrite the division problem to make some space for writing the steps down. If we start with this division
 $ 936 div 4 $
 
-We would write it like this (notice dividend and divisor have switche places!)
+We would write it like this (notice dividend and divisor have switched places!)
 #align(center)[#divtab(4, hl(1, 4), $4$, vl(start: 0), ..spl(936))]
 We call this form a _tableau_ (pronounced tab-BLOW) because it looks a little like a table and _tableau_ is the French word for table.
 
-After we finish the steps of the division algorithm the quotient (answer) will show up on top of the _tableau_ like this
+After we finish the steps of the division algorithm the quotient (answer) will show up on top of the tableau like this
 #align(center)[#divtab(4, [$$], [$2$],[$3$],[$4$], hl(1, 4), $4$, vl(start: 1), ..spl(936))]
 
 == Example
@@ -81,6 +81,28 @@ Rewrite each division fact using a tableau \
   ]
 }
 
+== Example
+=== Question
+Rewrite each division as a tableau and find the quotient.
+#{
+  set enum(numbering: "a.)")
+  [
+    + $6 div 3$
+    + $20 div 5$
+    + $72 div 6$
+  ]
+}
+=== Answer
+#{
+  set enum(numbering: "a.)")
+  [
+    + #divtab(2, [$$], $2$, hl(1, 3), $3$, vl(start: 1), $6$)
+
+    + #divtab(3, [$$], [$$],[$4$], hl(1, 4), $5$, vl(start: 1), ..spl(20))
+
+    + #divtab(3, [$$], [$1$],[$2$], hl(1, 4), $6$, vl(start: 1), ..spl(72))
+  ]
+}
 
 = The Steps
 The Division Algorithm has four steps:
@@ -99,7 +121,7 @@ First rewrite the division using a tableau
 #align(center)[
   #divtab(4, hl(1, 4), $4$, vl(start: 0), ..spl(936))
 ]
-Just like the addition, subtraction, and multiplication algorithms that we've already see, getting each number in exactly the right place is very important! Since this is a first example we'll add a grid to help keep things straight.
+Just like the addition, subtraction, and multiplication algorithms that we've already seen, getting each number in exactly the right place is very important! Since this is a first example we'll add a grid to help keep things straight.
 #align(center)[
   #divtab(
     4, 
@@ -379,12 +401,12 @@ $ 936 div 4 = #text(weight: "bold")[234] $
 
 = Leading Zeros
 Many times when we apply the division algorithm we run into numbers that look like this:
-$ 0248 $
+$ 0284 $
 
-The $0$ in the front of number is called a _leading zero_ and can be ignored. The number $0248$ is actually the same just $284$ in disguise! Remember that $0248$ is $0$ _thousands_ and $2$ _hundreds_ and $8$ _tens_ and $4$ _ones_. We just discard the $0$ _thousands_ and write $284$.
+The $0$ in the front of number is called a _leading zero_ and can be ignored. The number $0284$ is actually the just $284$ in disguise! Remember that $0284$ is $0$ _thousands_ and $2$ _hundreds_ and $8$ _tens_ and $4$ _ones_. We just discard the $0$ _thousands_ and write $284$.
 
 Sometimes you might even find multiple leading zeros. These can all be discarded:
-$ 01 &= 1 \ 001 &= 1 \ 0001 &= 1 $
+$ 01 &= 1 \ 0072 &= 72 \ 00015 &= 15 $
 
 But! We _never_ discard the _trailing_ zeros that come at _the end_ of a number:
 $ 0230 &= 230 \ 0076 &= 76 \ 000100000 &= 100000 $
@@ -783,3 +805,31 @@ So far when we have shown the division algorithm steps we copied the tableau ove
 Once again the *answer* waiting for us on top of the tableau:
 $ 6024 div 6 = #text(weight: "bold")[1004] $
 
+= Divisors With More Than One Digit
+When the divisor has more than one digit the quotient will emerge with one or more leading zeros.
+== Example
+=== Question
+What is $2482 div 12$?
+=== Answer
+
+#divtab(
+  6,
+  grid: true,
+  [$$], [], ..spl("0207"),
+  hl(2,6),
+  $1$, $2$, vl(start: 1), ..spl(2484),
+  [$$], minus, $0$, [], [], [],
+  hl(2,3),
+  [$$], [], $2$, $4$, [], [],
+  [$$], minus, $2$, $4$, [], [],
+  hl(2,4),
+  [$$], [], [], $0$, $8$, [],
+  [$$], [], minus, [], $0$, [],
+  hl(3,5),
+  [$$], [], [], [], $8$, $4$,
+  [$$], [], [], minus, $8$, $4$,
+  hl(4,6),
+  [$$], [], [], [], [], $0$
+)
+
+The division algorithm produces the number $0207$. After tossing away the leading zero we see the *answer* is $ 2482 div 12 = #text(weight: "bold")[207] $
