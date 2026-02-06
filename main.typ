@@ -34,6 +34,54 @@ Note that dealing with remainders is left until the lesson after this introducti
   The Long Division Algorithm
 ]
 
+= Why do we need an algorithm?
+We saw in Lesson 1 that to answer the question "what is $12 div 3$?" we must remember a multiplication fact that starts with a $3$ on one side of the $=$ and has a $12$ on the other:
+$ 3 times "??" = 12 $ 
+With practice, the correct fact leaps quickly to mind! $ 3 times 4 = 12 $ 
+The missing number $4$ in the multiplication fact reveals a matching division fact that also answers our question:
+$ 12 div 3 = 4 $
+
+While relying on our memorized multiplication facts allows us to do division quickly and reliably it only works for numbers that were on the multiplication table. How could we do a division with numbers that _aren't_ on the multiplication table? For example, what is $936 div 4$?
+
+To do divisions with numbers that aren't on the multiplication table we need a list of steps that we can follow to calculate the answer. Remember that such a list of steps is called an _algorithm_, so we need a _division algorithm_.
+
+Fortunately, as man has studied God's creation we have discovered a division algorithm!
+
+= The Tableau
+Before we apply the division algorithm we have to rewrite the division problem to make some space for writing the steps down. If we start with this division
+$ 936 div 4 $
+
+We would write it like this (notice dividend and divisor have switche places!)
+#align(center)[#divtab(4, hl(1, 4), $4$, vl(start: 0), ..spl(936))]
+We call this form a _tableau_ (pronounced tab-BLOW) because it looks a little like a table and _tableau_ is the French word for table.
+
+After we finish the steps of the division algorithm the quotient (answer) will show up on top of the _tableau_ like this
+#align(center)[#divtab(4, [$$], [$2$],[$3$],[$4$], hl(1, 4), $4$, vl(start: 1), ..spl(936))]
+
+== Example
+=== Question
+Rewrite each division fact using a tableau \
+#{
+  set enum(numbering: "a.)")
+  [
+    + $18 div 6 = 3$
+    + $50 div 5 = 10$
+    + $322 div 14 = 23$
+  ]
+}
+=== Answer
+#{
+  set enum(numbering: "a.)")
+  [
+    + #divtab(3, [$$], [$$],[$3$], hl(1, 4), $6$, vl(start: 1), ..spl(18))
+
+    + #divtab(3, [$$], [$1$],[$0$], hl(1, 4), $5$, vl(start: 1), ..spl(50))
+
+    + #divtab(5, [$$], [], [], $2$, $3$, hl(2, 5), $1$, $4$, vl(start: 1), ..spl(322))
+  ]
+}
+
+
 = The Steps
 The Division Algorithm has four steps:
 + #rt[Divide]
