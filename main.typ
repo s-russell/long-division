@@ -13,7 +13,7 @@ I envision this content as a section in a chapter on division. Here is a rough o
   - #underline[#sym.section#1: Division Facts] \
     _Learn all the division math facts associated with the corresponding math facts from the multiplication table_
   - #underline[#sym.section#2: Remainders and the Modulus] \
-    _Use multiplication facts and skip counting to find remainders; introduce the modulus operation"_
+    _Use multiplication facts and skip counting to find remainders; introduce the modulus operation_
   - #underline[#sym.section#3: The Division Algorithm] *($<-$ You are here)* \
     _Introduction to the standard "long" division algorithm using divisors from the multiplication table_
   - #underline[#sym.section#4: Remainders & The Division Algorithm] \
@@ -41,7 +41,7 @@ With practice, the correct fact leaps quickly to mind! $ 3 times 4 = 12 $
 The missing number $4$ in the multiplication fact reveals a matching division fact that also answers our question:
 $ 12 div 3 = 4 $
 
-While relying on our memorized multiplication facts allows us to do division quickly and reliably it only works for numbers that were on the multiplication table. How could we do a division with numbers that _aren't_ on the multiplication table? For example, what is $936 div 4$?
+While relying on our memorized multiplication facts allows us to do division quickly and reliably it only works for numbers that are on the multiplication table. How can we do a division with numbers that _aren't_ on the multiplication table? For example, what is $936 div 4$?
 
 To do divisions with numbers that aren't on the multiplication table we need a list of steps that we can follow to calculate the answer. Remember that such a list of steps is called an _algorithm_, so we need a _division algorithm_.
 
@@ -110,7 +110,7 @@ The Division Algorithm has four steps:
 + #bt[Multiply]
 + #gt[Subtract]
 + #pt[Drop]
-When doing a division we will usually go through all four step multiple times.
+When doing a division we will usually go through all four steps multiple times.
 
 #pagebreak()
 == Example
@@ -148,7 +148,7 @@ Now we're ready to follow the steps of the algorithm!
   [
     #rt[
       === Divide
-      Divide the first digit of the dividend $9$ by the divisor $4$:
+      Divide the _first digit_ of $936$ by $4$:
       $ 9 div 4 = 2 "r" 1 $
       We discard the remainder $1$ and write the quotient $2$ above the $9$ on the tableau.
     ]
@@ -807,7 +807,7 @@ So far when we have shown the division algorithm steps we copied the tableau ove
   )
   ]
 
-Once again the *answer* waiting for us on top of the tableau:
+Once again the *answer* is waiting for us on top of the tableau:
 $ 6024 div 6 = #text(weight: "bold")[1004] $
 #pagebreak()
 = Divisors With More Than One Digit
@@ -841,9 +841,11 @@ The division algorithm produces the number $0207$. After tossing away the leadin
 
 = Application
 == Question
-In order to be obedient to 1 Peter 4:9 which commands us to "show hospitality to one another without grumbling" Susan's husband has decided to budget \$180 this month to hosting other families from church for dinner. He wants to invite the Clark family who has 5 members on one night and the Taylor family with 3 members on a different night. Susan and her husband are newlyweds and have only one infant child who doesn't eat solid food yet. How much money should Susan plan to spend on each meal?
+In order to be obedient to 1 Peter 4:9 which commands us to "show hospitality to one another without grumbling" Susan's husband has decided to budget \$180 this month to hosting other families from church for dinner. He wants to invite the Clark family who has 5 members on one night and the Taylor family with 3 members on a different night. Susan and her husband are newlyweds and have only one infant child who doesn't eat solid food yet. How much money should Susan plan to spend on each dinner?
 == Answer
-The 5 Clarks and 3 Taylors together will need 8 meals. Susan and her husband (but not their kid) will each eat at both meals, which is 4 more meals. In total there are 12 meals that Susan will need to prepare with the \$180. To split \$180 into 12 equal parts we need division:
+The dinner with the Clarks will consist of 5 portions for each of the Clarks plus 2 more portions for Susan and her husband. Dinner with the Taylors will require 3 portions for each Taylor as well as 2 more for Susan and her husband. 
+
+In total there are 12 portions that Susan will need to prepare with the \$180. To split \$180 into 12 equal parts we need division:
 #align(center)[
   #divtab(
     5,
@@ -861,15 +863,15 @@ The 5 Clarks and 3 Taylors together will need 8 meals. Susan and her husband (bu
     [$$], [], [], [], [$0$]
   )
 ]
-Dropping the leading zero, we see Susan has \$15 to spend for each meal. 
-
-There will be 7 people eating the meal with the Clarks, so Susan should plan to spend \$105 for that meal (since $7 times 15 = 105$). This leaves \$75 for the meal with the Taylors (since $180 - 105 = 75$).
 #pagebreak()
+Dropping the leading zero, we see Susan has \$15 to spend for each portion. 
+
+There will be 7 people eating dinner with the Clarks, so Susan should plan to spend \$105 for that dinner (since $7 times 15 = 105$). This leaves \$75 for dinner with the Taylors (since $180 - 105 = 75$).
 = Application
 == Question
-Dave runs a business that fixes and installs HVAC systems in homes. He believes that hiring an employee to help him would let him earn an additional \$1000 per day. However Dave doesn't want to take on the hassle of finding jobs, scheduling, and billing for a new employee if it doesn't leave him with at least \$500 in new profit each day. Dave also estimates that a new employee would use about \$150 of parts and tools each day. If Dave expects the new employee would usually work 10 hours a day and the market rate for an HVAC technician is \$25 per hour should Dave try to hire a new employee?
+Dave runs a business that fixes and installs HVAC systems in homes. He believes that hiring an employee to help him would let him do an additional \$1000 of business per day. However, Dave doesn't want to take on the hassle of finding jobs, scheduling, and billing for a new employee if it doesn't leave him with at least \$500 in additional profit each day. Dave also estimates that a new employee would use about \$150 of parts and tools each day. If Dave expects the new employee would usually work 10 hours a day and the market rate for an HVAC technician is \$25 per hour should Dave try to hire a new employee?
 == Answer
-If Dave expects a \$1000 per day in new business, but wants to keep \$500 for himself in profit this leaves \$500 for the employee's wages and expenses (since $1000 - 500 = 500$). If the expenses will be \$150 this leaves \$350 to pay the employee (since $500 - 150 = 350$). To find the hourly rate that Dave can afford we have to divide the \$350 into 10 equal parts.
+If Dave expects a \$1000 per day in new business but wants to keep \$500 for himself in profit this leaves \$500 for the employee's wages and expenses (since $1000 - 500 = 500$). If the expenses will be \$150 this leaves \$350 to pay the employee (since $500 - 150 = 350$). To find the hourly rate that Dave can afford we have to divide the \$350 into 10 equal parts.
 #align(center)[
   #divtab(
     5,
