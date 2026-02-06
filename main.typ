@@ -58,6 +58,7 @@ We call this form a _tableau_ (pronounced tab-BLOW) because it looks a little li
 After we finish the steps of the division algorithm the quotient (answer) will show up on top of the tableau like this
 #align(center)[#divtab(4, [$$], [$2$],[$3$],[$4$], hl(1, 4), $4$, vl(start: 1), ..spl(936))]
 
+#pagebreak()
 == Example
 === Question
 Rewrite each division fact using a tableau \
@@ -103,7 +104,6 @@ Rewrite each division as a tableau and find the quotient.
     + #divtab(3, [$$], [$1$],[$2$], hl(1, 4), $6$, vl(start: 1), ..spl(72))
   ]
 }
-
 = The Steps
 The Division Algorithm has four steps:
 + #rt[Divide]
@@ -112,6 +112,7 @@ The Division Algorithm has four steps:
 + #pt[Drop]
 When doing a division we will usually go through all four step multiple times.
 
+#pagebreak()
 == Example
 === Question
 What is $936 div 4$?
@@ -139,7 +140,7 @@ Just like the addition, subtraction, and multiplication algorithms that we've al
 ]
 
 Now we're ready to follow the steps of the algorithm!
-#pagebreak()
+
 #grid(
   columns: (1fr, 1fr),
   align: (left, center),
@@ -410,7 +411,7 @@ $ 01 &= 1 \ 0072 &= 72 \ 00015 &= 15 $
 
 But! We _never_ discard the _trailing_ zeros that come at _the end_ of a number:
 $ 0230 &= 230 \ 0076 &= 76 \ 000100000 &= 100000 $
-
+#pagebreak()
 == Example
 === Question
 Simplify each number by discarding any leading zeros: \
@@ -435,7 +436,6 @@ First rewrite the division using a tableau:
 ]
 
 Before beginning, we should remember that dividing a number by a divisor bigger than itself is alway zero with a remainder. This means that, for example $ 1 div 7 = 0 "r" 7 $ Now we're ready to start!
-#pagebreak()
 
 #grid(
   columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr,),
@@ -667,7 +667,12 @@ Before beginning, we should remember that dividing a number by a divisor bigger 
         [$$], [], [], $2$,pt[$8$],
       )
     ]
-  ],
+  ]
+)
+#pagebreak()
+#grid(
+  columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr,),
+  row-gutter: 1em,  
   [
     #align(center)[
       #rt[Divide] \
@@ -804,7 +809,7 @@ So far when we have shown the division algorithm steps we copied the tableau ove
 
 Once again the *answer* waiting for us on top of the tableau:
 $ 6024 div 6 = #text(weight: "bold")[1004] $
-
+#pagebreak()
 = Divisors With More Than One Digit
 When the divisor has more than one digit the quotient will emerge with one or more leading zeros.
 == Example
@@ -833,3 +838,53 @@ What is $2482 div 12$?
 )
 
 The division algorithm produces the number $0207$. After tossing away the leading zero we see the *answer* is $ 2482 div 12 = #text(weight: "bold")[207] $
+
+= Application
+== Question
+In order to be obedient to 1 Peter 4:9 which commands us to "show hospitality to one another without grumbling" Susan's husband has decided to budget \$180 this month to hosting other families from church for dinner. He wants to invite the Clark family who has 5 members on one night and the Taylor family with 3 members on a different night. Susan and her husband are newlyweds and have only one infant child who doesn't eat solid food yet. How much money should Susan plan to spend on each meal?
+== Answer
+The 5 Clarks and 3 Taylors together will need 8 meals. Susan and her husband (but not their kid) will each eat at both meals, which is 4 more meals. In total there are 12 meals that Susan will need to prepare with the \$180. To split \$180 into 12 equal parts we need division:
+#align(center)[
+  #divtab(
+    5,
+    [$$], [], ..spl("015"),
+    hl(2,5),
+    [$1$], [$2$], vl(start: 1), [$1$], [$8$], [$0$],
+    [$$], minus, [$0$], [], [],
+    hl(2,3),
+    [$$], [], [$1$], [$8$], [],
+    [$$], minus, [$1$], [$2$], [],
+    hl(2,4),
+    [$$], [], [], [$6$], [$0$],
+    [$$], [], minus, [$6$], [$0$],
+    hl(3,5),
+    [$$], [], [], [], [$0$]
+  )
+]
+Dropping the leading zero, we see Susan has \$15 to spend for each meal. 
+
+There will be 7 people eating the meal with the Clarks, so Susan should plan to spend \$105 for that meal (since $7 times 15 = 105$). This leaves \$75 for the meal with the Taylors (since $180 - 105 = 75$).
+#pagebreak()
+= Application
+== Question
+Dave runs a business that fixes and installs HVAC systems in homes. He believes that hiring an employee to help him would let him earn an additional \$1000 per day. However Dave doesn't want to take on the hassle of finding jobs, scheduling, and billing for a new employee if it doesn't leave him with at least \$500 in new profit each day. Dave also estimates that a new employee would use about \$150 of parts and tools each day. If Dave expects the new employee would usually work 10 hours a day and the market rate for an HVAC technician is \$25 per hour should Dave try to hire a new employee?
+== Answer
+If Dave expects a \$1000 per day in new business, but wants to keep \$500 for himself in profit this leaves \$500 for the employee's wages and expenses (since $1000 - 500 = 500$). If the expenses will be \$150 this leaves \$350 to pay the employee (since $500 - 150 = 350$). To find the hourly rate that Dave can afford we have to divide the \$350 into 10 equal parts.
+#align(center)[
+  #divtab(
+    5,
+    [$$], [], ..spl("035"),
+    hl(2,5),
+    [$1$], [$0$], vl(start: 1), ..spl(350),
+    [$$], minus, [$0$], [], [],
+    hl(2,3),
+    [$$], [], [$3$], [$5$], [],
+    [$$], minus, [$3$], [$0$], [],
+    hl(2,4),
+    [$$], [], [], [$5$], [$0$],
+    [$$], [], minus, [$5$], [$0$],
+    hl(3,5),
+    [$$], [], [], [], [$0$]
+  )
+]
+We see now that Dave can afford to pay up to \$35 per hour. The market rate of \$25 per hour is the lowest rate that Dave will likely be able to find an employee willing to work for, but since Dave can afford to pay more than that he should attempt to hire a new employee.
