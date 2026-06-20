@@ -214,7 +214,7 @@ Now we're ready to follow the steps of the algorithm!
   [
     #pt[
       === Drop
-      Finally, we drop the next digit in the dividend ($3$) down to the same line as the $1$ we just got from subtracting
+      Finally, we drop the next digit in the dividend ($3$) down to the same line as the $1$ that came from the subtraction
     ]
   ],
   [
